@@ -1,5 +1,5 @@
 # Baloot Bots
-<strong>*Still in progress*</strong><br><hr>
+<strong>*Still in progress*!</strong><br><hr>
 This is The Senior Project for Spring 2022 in Faculty of Computing and Information Technology in King Abdul-Aziz University.
 <br>A playable (Baloot) card game in Python language using Reinforcement Learning.
 
