@@ -12,6 +12,5 @@ Credit to our Supervisor:
 -Dr. Rayan Hisham Mosli
 
 And my Friends who are also my colleagues that helped me in this project, which you will find their information in the GitHub accounts below:
-@MohammedA23
-@CodeManJoe
-@MooN
+<br>@MohammedA23
+<br>@CodeManJoe
