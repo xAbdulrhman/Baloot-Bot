@@ -24,5 +24,3 @@ TeamDict = {
     0: 'SCORE1',
     1: 'SCORE2',
 }
-
-
