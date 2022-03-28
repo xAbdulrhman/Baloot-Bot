@@ -1,7 +1,7 @@
 # ** THIS IS THE MAIN FILE TO RUN **
 # This Python file uses the following encoding: utf-8
 
-from Data import PlayerRange,PlayerDict
+from Data import PlayerRange,PlayerDict,TableRange
 from datetime import datetime
 import traceback
 import math
