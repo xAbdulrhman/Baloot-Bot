@@ -1,14 +1,11 @@
 # ** THIS IS THE MAIN FILE TO RUN **
 # This Python file uses the following encoding: utf-8
 
-from Data import PlayerRange,PlayerDict,TableRange
+from Data import PlayerRange, PlayerDict, TableRange
 from datetime import datetime
 import traceback
 import math
 from BalootPack import BalootPack
-
-
-Verbose = False
 
 
 class Baloot(object):
@@ -31,12 +28,9 @@ class Baloot(object):
 
             for t in range(8):  # that many rounds
 
-                if True:
-                    print('------------------------------------')
-                if True:
-                    print('Round {}'.format(t+1))
-                if True:
-                    print('------------------------------------')
+                print('\n------------------------------------')
+                print('\t     Round {}'.format(t+1))
+                print('------------------------------------')
 
                 # for each player. TODO: index which depends on DealingPlayer
                 for j_ in range(TableRange.Max):
@@ -61,13 +55,9 @@ class Baloot(object):
                             except:
                                 traceback.print_exc()
                     else:
-                        if Verbose:
-                            print(PlayerDict[j])
-                        if Verbose:
-                            print(PlayerPack)
                         for PlayerPackIndex, card in enumerate(PlayerPack):
                             # first card that is valid
-                            if BalootPackObject.CheckPlayerMove(j, PlayerPackIndex, CheckPlayerMoveVerbose=Verbose):
+                            if BalootPackObject.CheckPlayerMove(j, PlayerPackIndex, CheckPlayerMoveVerbose=False):
                                 BalootPackObject.ToTablePack(
                                     j, PlayerPackIndex)  # play it
                                 break
@@ -79,7 +69,7 @@ class Baloot(object):
                 WinningTablePackIndex = BalootPackObject.GetWinningTablePackIndex()
                 WinningPlayer = (BalootPackObject.FirstPlayer +
                                  WinningTablePackIndex) % PlayerRange.Max
-                print('WinningPlayer:', PlayerDict[WinningPlayer]+"\n")
+                print('WinningPlayer:', PlayerDict[WinningPlayer])
                 BalootPackObject.ToScorePack(BalootPackObject.Player2Team(
                     WinningPlayer))  # puts played cards in the score pile
 
@@ -108,7 +98,7 @@ class Baloot(object):
             print("Total Score Team 1: ", TotalScore1)
             print("total Score Team 2: ", TotalScore2, "\n")
 
-            Dealer = (Dealer + 1) % 4
+            Dealer = (Dealer + 1) % 4   # changing dealer each round
 
 
 StartTime = datetime.now()
