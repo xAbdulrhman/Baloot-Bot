@@ -23,8 +23,6 @@ class BalootPack(Pack):
         random.shuffle(self)
 
     def Deal(self, DealingPlayer=None):
-        if DealingPlayer is None:
-            raise BalootException('DealingPlayer parameter cannot be None')
 
         self.DealingPlayer = DealingPlayer
         self.FirstPlayer = (self.DealingPlayer + 1) % TableRange.Max
@@ -75,7 +73,7 @@ class BalootPack(Pack):
 
             if RandInt >= 2:
                 self.Trump = self[0].GetSuit()
-                print("Game type is Hokom ")
+                print("Game type is Hokom")
             else:
                 print("Game type is Sun")
 
