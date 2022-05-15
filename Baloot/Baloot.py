@@ -1,9 +1,9 @@
 # ** THIS IS THE MAIN FILE TO RUN **
 # This Python file uses the following encoding: utf-8
 
+from copy import deepcopy
 from Data import PlayerRange, PlayerDict, TableRange
 from datetime import datetime
-import traceback
 import math
 from BalootPack import BalootPack
 
@@ -30,30 +30,44 @@ class Baloot(object):
 
                 print('\n------------------------------------')
                 print('\t     Round {}'.format(t+1))
-                print('------------------------------------')
+                print('------------------------------------\n')
 
                 # for each player. TODO: index which depends on DealingPlayer
                 for j_ in range(TableRange.Max):
 
                     j = (BalootPackObject.FirstPlayer + j_) % PlayerRange.Max
                     PlayerPack = BalootPackObject.GetPlayerPack(j)
+                    LegalPack = deepcopy(PlayerPack)
+                    LegalPack.clear()                    
 
                     if HumanPlayer == j:
                         while True:
-                            print("Table: >>>>>>>>>>>>>>>>")
+
+                            LegalIds = []
+                            LegalIndex = 0
+                            print("Table: >>>>>>>>>>>>>>>>\n")
                             print(BalootPackObject.GetTablePack())
-                            print("Your hand:")
-                            print(PlayerPack)
+                            print("Your hand:\n")
+                            for index in range(len(PlayerPack)):
+                                if BalootPackObject.CheckPlayerMove(j, index, CheckPlayerMoveVerbose=True):
+                                    LegalPack.append(PlayerPack[index])
+                                    print("{}: {}".format(index, LegalPack[LegalIndex]))
+                                    LegalIds.append(index)
+                                    LegalIndex = LegalIndex + 1
+
                             try:
+                                # print(LegalIds) #for condition testing purposes
                                 PlayerPackIndex = int(
-                                    input('Pick card index > '))
+                                    input('\nPick card index > '))
                                 # checks card validity
-                                if BalootPackObject.CheckPlayerMove(j, PlayerPackIndex, CheckPlayerMoveVerbose=True):
-                                    BalootPackObject.ToTablePack(
-                                        j, PlayerPackIndex)  # play it
+                                if not PlayerPackIndex in LegalIds:
+                                    print("\nIT WAS A MISINPUT!\nMISINPUT!\n>> Enter One of The Options Displayed\n")
+                                else:
+                                    if BalootPackObject.CheckPlayerMove(j, PlayerPackIndex, CheckPlayerMoveVerbose=True):
+                                        BalootPackObject.ToTablePack(j, PlayerPackIndex)  # play it
                                     break
                             except:
-                                traceback.print_exc()
+                                print("\nIT WAS A MISINPUT!\nMISINPUT!\n>> Enter One of The Options Displayed\n")
                     else:
                         for PlayerPackIndex, card in enumerate(PlayerPack):
                             # first card that is valid

@@ -62,7 +62,7 @@ class BalootPack(Pack):
             print('\n{} Take {} of {}'.format(PlayerDict[(
                 self.DealingPlayer+1) % 4], Card.NumberDict[self.Number], Card.SuitDict[self.Suit]))
 
-            GameType = input("Select game type Hokom or Sun (H/S)")
+            GameType = input("Select game type Hokom or Sun (H/S): ")
 
             if GameType == "H" or GameType == "h":
 
@@ -155,26 +155,31 @@ class BalootPack(Pack):
                     if CardToPlay.GetValue(Trump=self.Trump) < WinningPlayedTrumpCard.GetValue(Trump=self.Trump):
                         if self.TrumpHigher(Player=Player):
                             if CheckPlayerMoveVerbose:
-                                print("You have to Trump higher")
+                                # print("You have to Trump higher")
+                                3+2
                             return False
                         else:
                             if CheckPlayerMoveVerbose:
-                                print("Player may play lower Trump")
+                                # print("Player may play lower Trump")
+                                3+2
                             return True
                     else:
                         if CheckPlayerMoveVerbose:
-                            print("Player rises to Trump")
+                            # print("Player rises to Trump")
+                            3+2
                         return True
                 else:
                     if CheckPlayerMoveVerbose:
-                        print("The player must play the requested suit")
+                        # print("The player must play the requested suit")
+                        3+2
                     return True
             else:
                 HasRequestedColor = self.HasRequestedColor(
                     Player, RequestedColor)
                 if HasRequestedColor:
                     if CheckPlayerMoveVerbose:
-                        print('The player must play the requested suit')
+                        # print('The player must play the requested suit')
+                        3+2
                     return False
                 else:
                     if CardToPlay.GetSuit() == self.Trump:
@@ -183,38 +188,42 @@ class BalootPack(Pack):
                             if CardToPlay.GetValue(Trump=self.Trump) < WinningPlayedTrumpCard.GetValue(Trump=self.Trump):
                                 if self.TrumpHigher(Player=Player):
                                     if CheckPlayerMoveVerbose:
-                                        print(
-                                            "When you cut you must Trump higher")
+                                        # print("When you cut you must Trump higher")
+                                        3+2
                                     return False
                                 else:
                                     if CheckPlayerMoveVerbose:
-                                        print(
-                                            "The player plays lower Trump card")
+                                        # print("The player plays lower Trump card")
+                                        3+2
                                     return True
                             else:
                                 if CheckPlayerMoveVerbose:
-                                    print("Player cuts and raises to Trump")
+                                    # print("Player cuts and raises to Trump")
+                                    3+2
                                 return True
                         else:
                             if CheckPlayerMoveVerbose:
-                                print(
-                                    "Player cuts (first Trump to fall in this trick)")
+                                # print("Player cuts (first Trump to fall in this trick)")
+                                3+2
                             return True
                     else:
                         HasTrump = self.HasTrump(Player)
                         if HasTrump:
                             if CheckPlayerMoveVerbose:
-                                # TODO: partenaire maitre
-                                print("Player must cut if he has Trump cards")
+                                
+                                # print("Player must cut if he has Trump cards")
+                                3+2
                             return False
                         else:
                             if CheckPlayerMoveVerbose:
-                                print("Player cannot cut (no Trump cards in hand)")
+                                # print("Player cannot cut (no Trump cards in hand)")
+                                3+2
                             return True
 
         else:
             if CheckPlayerMoveVerbose:
-                print('The winning player chooses a card')
+                # print('The winning player chooses a card')
+                3+2
             return True
 
     def GetScorePack(self, Team=None):
